@@ -1,0 +1,71 @@
+.title.level1 {
+  font-size: 1.5rem;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  line-height: 1.334;
+  letter-spacing: 0em;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.87);
+  padding: 0 6rem; /* 根据需要调整 */  
+  /* box-sizing: border-box;   */
+}
+
+.section {
+  padding: 1.5rem 1rem;
+}
+
+.title.level2 {
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-top: 1em;
+  margin-bottom: 0.25em;
+}
+
+.hint {
+  font-size: 1.2rem;
+  color: #999;
+  text-align: center;
+}
+
+.outer-container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  background-color: #fafafa;
+  border: #000;
+  border-width: 0px 1px 0px 1px;
+  border-style: solid;
+  border-color: #e0e0e0;
+}
+
+.main-content {
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5;
+  letter-spacing: 0.00938em;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+@media (min-width: 1200px) {
+  .outer-container {
+    max-width: 1200px;
+  }
+}
+
+@media (min-width: 600px) {
+  .outer-container {
+    padding: 3rem 7rem;
+  }
+}
+
+#root {
+  background-color: #f1f1f1;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}

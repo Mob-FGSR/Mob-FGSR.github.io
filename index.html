@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="utf-8">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="Mob-FGSR: Elevating Mobile Real-Time Rendering with Fast Frame Generation and Super Resolution">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mob-FGSR: Elevating Mobile Real-Time Rendering with Fast Frame Generation and Super Resolution</title>
+
+  <link rel="stylesheet" href="./resources/css/index.css">
+</head>
+
+<body>
+
+  <div id="root">
+
+    <div class="outer-container">
+      <section>
+        <h1 class="title level1">Mob-FGSR: Elevating Mobile Real-Time Rendering with Fast Frame Generation and Super Resolution</h1>
+        <p class="hint">(Temporary Homepage for Review)</p>
+      </section>
+    
+      <section class="section">
+        <img style="width: 100%;" src="resources/images/teaser.png"/>
+
+        <h2 class="title level2">Abstract</h2>
+        <p class="main-content">
+          Recent advances in supersampling for frame generation and super-resolution
+          improve real-time rendering performance significantly. However, because
+          these methods rely heavily on the most recent features of high-end GPUs,
+          they are impractical for mobile platforms, which are limited by lower GPU
+          capabilities and a lack of optical flow estimation hardware. We propose MobFGSR, 
+          a novel lightweight supersampling framework tailored for mobiledevices that 
+          integrates frame generation with super resolution to effectively
+          improve real-time rendering performance. Our method introduces a splatbased 
+          motion vectors reconstruction method, which allows for accurate
+          pixel-level motion estimation for both interpolation and extrapolation at
+          desired times without the need for high-end GPUs or rendering data from
+          generated frames. Subsequently, fast image generation models are designed
+          to construct interpolated or extrapolated frames and improve resolution,
+          providing users with a plethora of options. Our runtime models operate
+          without the use of neural networks, ensuring their applicability to mobile
+          devices. Extensive testing shows that our framework outperforms other
+          lightweight solutions and rivals the performance of algorithms designed
+          specifically for high-end GPUs. Our model’s minimal runtime is confirmed
+          by on-device testing, demonstrating its potential to benefit a wide range of
+          mobile real-time rendering applications.
+        </p>
+    
+    
+        <h2 class="title level2">Fast Forward Video</h2>
+        <video class="video" style="width: 100%;" src="resources/videos/test.mp4" preload="auto" controls=""></video>
+
+        <h2 class="title level2">Android Demo</h2>
+        <video class="video" style="width: 100%;" src="resources/videos/test1.mp4" preload="auto" controls=""></video>
+        <p class="main-content">Android demo is available from <a href="resources/demo/test.apk">here</a>.</p>
+    
+        <h2 class="title level2">Source Code</h2>
+        <p>⏱Coming soon</p>
+        
+      </section>
+    </div>
+  </div>
+</body>
+
+</html>
