@@ -1,12 +1,12 @@
 .title.level1 {
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   font-family: Roboto, Helvetica, Arial, sans-serif;
   font-weight: 500;
   line-height: 1.334;
   letter-spacing: 0em;
   text-align: center;
   color: rgba(0, 0, 0, 0.87);
-  padding: 0 6rem; /* 根据需要调整 */  
+  padding: 0 4rem; /* 根据需要调整 */  
   /* box-sizing: border-box;   */
 }
 
