@@ -1,6 +1,40 @@
 <!DOCTYPE html>
 <html lang="utf-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>  
+<script>
+$(document).ready(function(){    
+  var currentImage = 0;    
+  var images = $(".img-box");    
+  $(images[currentImage]).addClass("active");    
+  $("#prev").prop("disabled", true);
+    
+  $("#next").click(function(){    
+    if (currentImage < images.length - 1) {
+      $(images[currentImage]).removeClass("active");    
+      currentImage++;  
+      $(images[currentImage]).addClass("active");    
+      $("#prev").prop("disabled", false);
+    }  
 
+    if (currentImage == images.length - 1) {  
+      $("#next").prop("disabled", true);  
+    }  
+  });    
+    
+  $("#prev").click(function(){    
+    if (currentImage > 0) {
+      $(images[currentImage]).removeClass("active");    
+      currentImage--;  
+      $(images[currentImage]).addClass("active");    
+      $("#next").prop("disabled", false);
+    }  
+
+    if (currentImage == 0) {  
+      $("#prev").prop("disabled", true);  
+    }  
+  });    
+});    
+</script>
 <head>
   <meta charset="utf-8">
   <meta name="description" content="Mob-FGSR: Elevating Mobile Real-Time Rendering with Fast Frame Generation and Super Resolution">
@@ -53,7 +87,37 @@
 
         <h2 class="title level2">Android Demo</h2>
         <video class="video" style="width: 100%;" src="https://github.com/Mob-FGSR/Mob-FGSR.github.io/blob/main/resources/videos/android_demo.mp4?raw=true" preload="auto" controls=""></video>
-        <p class="main-content">Android demo is available from <a href="resources/demo/MobFGSR.apk">here</a>.</p>
+        
+        <p class="apk-block" style="text-align: center; padding-top: 1rem; line-height: 100px;">
+          ////////////////////////////////////////////////////////////////////////////////////////<br/>
+          //////////// <img src="resources/images/android.svg" style="vertical-align: middle; height: 3em;">&nbsp;Android demo is available <a href="resources/demo/MobFGSR.apk">here</a>. ////////////<br/>
+          ////////////////////////////////////////////////////////////////////////////////////////<br/></p>
+        <h2 class="title level2">Screenshots</h2>
+        <div class="img-container">  
+          <button id="prev" >&lt;</button>  
+          <div class="img-box">  
+            <img src="resources/images/NoneSS.jpg" alt="NoneSS">  
+            <p>None SS</p>  
+          </div>  
+          <div class="img-box">  
+            <img src="resources/images/Interpolation.jpg" alt="Interpolation">  
+            <p>Interpolation</p>  
+          </div>  
+          <div class="img-box">  
+            <img src="resources/images/Extrapolation.jpg" alt="Extrapolation">  
+            <p>Extrapolation</p>  
+          </div>  
+          <div class="img-box">  
+            <img src="resources/images/InterpolationSR.jpg" alt="InterpolationSR">  
+            <p>Interpolation & SR</p>  
+          </div>  
+          <div class="img-box">  
+            <img src="resources/images/ExtrapolationSR.jpg" alt="ExtrapolationSR">  
+            <p>Extrapolation & SR</p>  
+          </div>
+          <button id="next">&gt;</button>  
+        </div>
+
     
         <h2 class="title level2">Source Code</h2>
         <p>⏱Coming soon</p>
