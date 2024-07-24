@@ -34,10 +34,16 @@ $(document).ready(function(){
     }  
   });    
 
-  $('.btn').hover(function(){
+  $('#paper_btn').hover(function(){
     $('#paper_img').attr('src', 'resources/images/paper_black.png');
   }, function(){
     $('#paper_img').attr('src', 'resources/images/paper_white.png');
+  });
+
+  $('#supp_btn').hover(function(){
+    $('#supp_img').attr('src', 'resources/images/paper_black.png');
+  }, function(){
+    $('#supp_img').attr('src', 'resources/images/paper_white.png');
   });
 });    
 </script>
@@ -74,7 +80,9 @@ $(document).ready(function(){
           <sup>*</sup>Corresponding author
         </p>
         <p class="center">
-          <a href="https://dl.acm.org/doi/10.1145/3641519.3657424" class="btn"><img id="paper_img" style="width:1rem; height:1rem;" src="resources/images/paper_white.png"/> Paper</a>
+          <a href="resources/paper/SIGGRAPH_Conf_Mob_FGSR.pdf" class="btn" id="paper_btn"><img id="paper_img" style="width:1rem; height:1rem;" src="resources/images/paper_white.png"/> Paper</a>
+          
+          <a href="resources/paper/Sup_Mob_FGSR_Super_Resolution_and_Frame_Generation_for__Mobile_Real_time_Rendering.pdf" class="btn" id="supp_btn"><img id="supp_img" style="width:1rem; height:1rem;" src="resources/images/paper_white.png"/> Supp.</a>
         </p>
       </section>
     
