@@ -33,6 +33,12 @@ $(document).ready(function(){
       $("#prev").prop("disabled", true);  
     }  
   });    
+
+  $('.btn').hover(function(){
+    $('#paper_img').attr('src', 'resources/images/paper_black.png');
+  }, function(){
+    $('#paper_img').attr('src', 'resources/images/paper_white.png');
+  });
 });    
 </script>
 <head>
@@ -51,10 +57,22 @@ $(document).ready(function(){
     <div class="outer-container">
       <section>
         <h1 class="title level1">Mob-FGSR: Frame Generation and Super Resolution <br/> for Mobile Real-Time Rendering</h1>
-        <p class="hint">
-          Sipeng Yang, Qingchuan Zhu, Junhao Zhuge,<br>
-          Qiang Qiu, Chen Li, Yuzhong Yan, Huihui Xu,<br>
-          Ling-Qi Yan, Xiaogang Jin
+        <p class="hint">SIGGRAPH 2024</p>
+        <p class="author center">
+          <a href="https://sp-young.github.io/">Sipeng Yang</a><sup>1</sup>, Qingchuan Zhu<sup>1</sup>, Junhao Zhuge<sup>1</sup>,
+          Qiang Qiu<sup>2</sup>, Chen Li<sup>2</sup>, Yuzhong Yan<sup>2</sup>, Huihui Xu<sup>2</sup>,
+          <a href="https://sites.cs.ucsb.edu/~lingqi/">Ling-Qi Yan</a><sup>3</sup>, <a href="http://www.cad.zju.edu.cn/home/jin/">Xiaogang Jin</a><sup>1*</sup>
+        </p>
+        <p class="author center">
+          <sup>1</sup>State Key Lab of CAD&CG, Zhejiang University&nbsp;&nbsp;&nbsp;&nbsp;
+          <sup>2</sup>OPPO Computing & Graphics Research Institute&nbsp;&nbsp;&nbsp;&nbsp;
+          <sup>3</sup>University of California, Santa Barbara
+        </p>
+        <p class="author center">
+          <sup>*</sup>Corresponding author
+        </p>
+        <p class="center">
+          <a href="https://dl.acm.org/doi/10.1145/3641519.3657424" class="btn"><img id="paper_img" style="width:1rem; height:1rem;" src="resources/images/paper_white.png"/> Paper</a>
         </p>
       </section>
     
