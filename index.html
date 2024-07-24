@@ -66,6 +66,8 @@ $(document).ready(function(){
         <p class="author center">
           <sup>1</sup>State Key Lab of CAD&CG, Zhejiang University&nbsp;&nbsp;&nbsp;&nbsp;
           <sup>2</sup>OPPO Computing & Graphics Research Institute&nbsp;&nbsp;&nbsp;&nbsp;
+        </p>
+        <p class="author center">
           <sup>3</sup>University of California, Santa Barbara
         </p>
         <p class="author center">
@@ -78,7 +80,8 @@ $(document).ready(function(){
     
       <section class="section">
         <img style="width: 100%;" src="resources/images/teaser.png"/>
-
+        <p style="color: #464646;">Requiring only color, depth, and motion vectors (MVs) from frames rendered at times 0 (A) and 1 (C), our approach efficiently produces
+          high-quality interpolated (B) / extrapolated (D) frames and their SR counterparts at desired times.</p>
         <h2 class="title level2">Abstract</h2>
         <p class="main-content">
           Recent advances in supersampling for frame generation and super-resolution
@@ -103,8 +106,201 @@ $(document).ready(function(){
           mobile real-time rendering applications.
         </p>
 
+        <h2 class="title level2">Method Overview</h2>
+        <img src="resources/images/pipeline.png" style="width:100%;">
+        <p class="main-content">
+        For the <strong>interpolation model</strong>, MVs and depth from I-frames 0 and 1 are used for motion splatting to generate bidirectional MVs 𝑀<sub>0→𝛼</sub> and 𝑀<sub>1→𝛼</sub>.
+        The color and depth data from these frames are then warped and blended to create the interpolated frame. <br>
+        For the <strong>extrapolation model</strong>, we
+        predict single-direction MVs 𝑀<sub>1→1+𝛼</sub> and apply a disocclusion filling module to handle missing MVs in disoccluded areas. The extrapolated
+        frame is produced by performing backward warping on frame 1.
+        </p>
+
+        <h2 class="title level2">Motion Estimation</h2>
+        <img src="resources/images/motion_estimation.png" style="width:100%;">
+        <p class="main-content">
+        By analyzing two consecutive frames, we estimate precise pixel
+        motions along linear and nonlinear trajectories with uniform
+        acceleration (quadratic motion).
+        </p>
+
+        <div style="display: flex;">
+          <div style="display: flex; align-items: center;">
+            <p class="main-content">
+            Depth-aware motion splatting with atomic operations ensures foreground pixels are prioritized in MVs.
+            </p>
+          </div>
+          <div style="width: 50%">
+            <img src="resources/images/mv_splats.png" style="width:100%;">
+          </div>
+        </div>
+
+        <div style="display: flex;">
+          <div style="margin-right: 1rem;">
+            <img src="resources/images/ColorImage.png" style="width:100%;">
+            <p class="center">Color image</p>
+          </div>
+
+          <div style="margin-right: 1rem;">
+            <img src="resources/images/SplattedMVs.png" style="width:100%;">
+            <p class="center">Splatted MVs</p>
+          </div>
         
           
+          <div style="margin-right: 1rem;">
+            <img src="resources/images/RefinedMVs.png" style="width:100%;">
+            <p class="center">Refined MVs</p>
+          </div>
+
+          <div>
+            <img src="resources/images/ReferenceMVs.png" style="width:100%;">
+            <p class="center">Reference MVs</p>
+          </div>
+        </div>
+        <p class="main-content">
+        Splatted MVs often exhibit grid-like gaps, which are identified
+        using a thin-object detection method and filled using a mean filter.
+        </p>
+        
+        <h2 class="title level2">Frame Reconstruction</h2>
+        <p class="main-content">
+        For <strong>interpolation</strong>, we use reconstructed MVs to warp adjacent rendered frames and blend them for interpolation.
+        </p>
+        
+        <div style="display: flex; justify-content: center;">
+          <div style="margin-right: 2rem;">
+            <img src="resources/images/Warped0.png" style="width:100%;">
+            <p class="center">Warped frame 0</p>
+          </div>
+
+          <div style="margin-right: 2rem;">
+            <img src="resources/images/Warped1.png" style="width:100%;">
+            <p class="center">Warped frame 1</p>
+          </div>
+        
+          
+          <div style="margin-right: 2rem;">
+            <img src="resources/images/Constructed.png" style="width:100%;">
+            <p class="center">Constructed frame</p>
+          </div>
+
+          <div>
+            <img src="resources/images/Reference.png" style="width:100%;">
+            <p class="center">Reference</p>
+          </div>
+        </div>
+        <div style="display: flex;">
+          <div style="">
+            <img src="resources/images/frame_blend.png" style="width:100%;">
+          </div>
+          <div style="display: flex; align-items: center; margin-left:2rem">
+            <p class="main-content" style="color:#7030a0">
+              Use depth (D) and brightness (B) to determine whether changes are shading changes or disocclusions.
+            </p>
+          </div>
+        </div>
+        <p class="main-content">
+          (1) Color is preferentially sampled from the temporally closer frame when the color and depth of the two warped frames are similar. (2) For disocclusions, appropriate pixels from both frames are selected to avoid ghosting artifacts. (3) For shading changes, a simple linear interpolation (lerp) of the two frames ensures a smooth transition.
+        </p>
+        <p class="main-content">
+          For <strong>extrapolation</strong>, due to the lack of subsequent frame references, we warp a single frame and use a simplified disocclusion filling method to address gaps. This approach, utilizing MVs from the rendered frame, balances runtime efficiency and image quality effectively. 
+        </p>
+
+        <h2 class="title level2">Super Resolution</h2>
+        <div style="display: flex;">
+          <div style="width:60%; margin-right:1rem">
+            <img src="resources/images/super_resolution.png" style="width: 100%;">
+          </div>
+
+          <div style="width:100%">
+            <p class="main-content">
+              We introduced learned resampling weights for repeated image warping on mobile platforms. This data-driven approach learns optimal filters for repeated sampling, utilizing a lookup table (LUT) for rapid access to 16-pixel weights based on sampling positions (d<sub>x</sub> and d<sub>y</sub>). Experimental results indicate that the LUT-based method matches bicubic quality but operates faster.
+            </p>
+            
+            <div style="display: flex; justify-content: center;">
+              <div style="margin-right: 1rem;">
+                <img src="resources/images/resample.png" style="width:100%;">
+              </div>
+              <div style="margin-right: 1rem;">
+                <img src="resources/images/resample_original.png" style="width:100%;">
+                <p class="center">Original</p>
+              </div>
+            </div>
+
+            <div style="display: flex; justify-content: center;">
+              <div style="margin-right: 1rem;">
+                <img src="resources/images/resample_bilinear.png" style="width:100%;">
+                <p class="center">Bilinear</p>
+              </div>
+            
+              
+              <div style="margin-right: 1rem;">
+                <img src="resources/images/resample_bicubic.png" style="width:100%;">
+                <p class="center">Bicubic</p>
+              </div>
+    
+              <div>
+                <img src="resources/images/resample_LUT.png" style="width:100%;">
+                <p class="center">LUT method</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <p class="main-content">
+          Our SR module employs a standard framework that reuses accumulated temporal samples from history frames to construct the high-resolution current image. To construct the SR frame, we align the history SR frame with the current frame using LUT-based image backward warping, rectify invalid pixels in the warped history frame, and blend it with the low-resolution frame to produce the final output. This module can seamlessly replace the standard image warping module in the frame generation process.
+        </p>
+        <div style="display:flex; justify-content: center;">
+          <img src="resources/images/sr_blend.png" style="width: 50%;">
+        </div>
+        <p class="main-content"  style="color:#7030a0">
+          q is the reconstructed pixel, a and b are parameters acquired using data-driven optimization, d<sub>s</sub> is the distance from the sampling point to the pixel, and q<sup>w</sup> is the historical pixel.
+        </p>
+
+
+
+        <h2 class="title level2">Results and Comparisons</h2>
+        <img src="resources/images/fg_comparison.png" style="width: 100%;">
+        <p class="main-content" style="margin-bottom: 1rem;">
+          Comparison of our models, Ours-I (interpolation) and Ours-E (extrapolation), with existing frame generation methods including 3DWarp [Mark et al. 1997], BSR [Yang et al. 2011], and AFME [Holmes and Wicks 2020].
+        </p>
+        <img src="resources/images/sr_comparison.png" style="width: 100%;">
+        <p class="main-content" style="margin-bottom: 1rem;">
+          Comparison of our models, Ours-SR, Ours-ISR (interpolation & SR), Ours-ESR (extrapolation & SR), with existing super resolution methods including TSR [Epic 2022], FSR 2 [AMD 2022], and DLSS 2 [Liu 2020].
+        </p>
+        <div style="display: flex; justify-content: center; flex-wrap: wrap; margin-bottom: 1rem;">
+          <img src="resources/images/unity_scene_comparison.png" style="width: 70%;">
+          <p class="main-content">
+          Unity scenes with forward shading: 
+          Street View (SV), Meadows (ME), Hilly Area (HA), and DragonPark (DP)
+          </p>
+        </div>
+        <div style="display: flex; justify-content: center; flex-wrap: wrap;">
+          <img src="resources/images/ue_scene_comparison.png" style="width: 70%;">
+          <p class="main-content">
+            UE scenes with deferred shading: 
+            Bunker (BK) and Western Town (WT).          
+          </p>
+        </div>
+
+
+
+        <h2 class="title level2">On-device Testing</h2>
+        <p class="main-content">
+          We analyzed performance on devices equipped with the Qualcomm Snapdragon 8 Gen 3 processors. Our method rapidly delivers high-quality frame generation and SR, ideal for enhancing mobile real-time rendering. 
+        </p>
+
+        <div style="display: flex; justify-content: center; flex-wrap: wrap;">
+          <img src="resources/images/runtime.png" style="width: 80%; margin-bottom: 1rem;">
+          <img src="resources/images/runtime_comparison.png" style="width: 70%; margin-bottom: 1rem;">
+        </div>
+        <p class="main-content">
+          We developed an Android real-time rendering application and implemented resolution-related no-operation computational tasks to simulate intensive rendering environments. Without supersampling, the frame rate achieves about 22 FPS. Generating two frames can increase the frame rate to approximately 50 FPS, and using 2x super-resolution can boost it to over 110 FPS.
+        </p>
+        <div style="display: flex; justify-content: center;">
+          <img src="resources/images/android_runtime.png" style="width: 80%;">
+        </div>
+
         <h2 class="title level2">Android Demo</h2>
         <p class="apk-block" style="text-align: center; padding-top: 1rem; line-height: 20px;">
           ////////////////////////////////////////////////////////////////////////////////////////<br/>
@@ -140,6 +336,17 @@ $(document).ready(function(){
         <h2 class="title level2">Source Code</h2>
         <p class="main-content">⏱The code will be submitted in stages as it is undergoing review by our business partner.</p>
         
+        <h2 class="title level2">Citation</h2>
+        <div style="display: flex;overflow-x: auto;">
+          <pre style=" background-color: #e9eeef;padding: 1.25em 1.5em"><code>@inproceedings{yang2024mob,
+  title={Mob-FGSR: Frame Generation and Super Resolution for Mobile Real-Time Rendering},
+  author={Yang, Sipeng and Zhu, Qingchuan and Zhuge, Junhao and Qiu, Qiang and Li, Chen and Yan, Yuzhong and Xu, Huihui and Yan, Ling-Qi and Jin, Xiaogang},
+  booktitle={ACM SIGGRAPH 2024 Conference Papers},
+  pages={1--11},
+  year={2024}
+}</code></pre>
+
+        </div>
       </section>
     </div>
   </div>
