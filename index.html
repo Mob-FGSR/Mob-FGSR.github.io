@@ -45,6 +45,12 @@ $(document).ready(function(){
   }, function(){
     $('#supp_img').attr('src', 'resources/images/paper_white.png');
   });
+  
+  $('#code_btn').hover(function(){
+    $('#code_img').attr('src', 'resources/images/code_black.png');
+  }, function(){
+    $('#code_img').attr('src', 'resources/images/code_white.png');
+  });
 });    
 </script>
 <head>
@@ -83,6 +89,8 @@ $(document).ready(function(){
           <a href="resources/paper/SIGGRAPH_Conf_Mob_FGSR.pdf" class="btn" id="paper_btn"><img id="paper_img" style="width:1rem; height:1rem;" src="resources/images/paper_white.png"/> Paper</a>
           
           <a href="resources/paper/Sup_Mob_FGSR_Super_Resolution_and_Frame_Generation_for__Mobile_Real_time_Rendering.pdf" class="btn" id="supp_btn"><img id="supp_img" style="width:1rem; height:1rem;" src="resources/images/paper_white.png"/> Supp.</a>
+
+          <a href="https://github.com/Mob-FGSR/MobFGSR" class="btn" id="code_btn"><img id="code_img" style="width:1rem; height:1rem;" src="resources/images/code_white.png"/> Code</a>
         </p>
       </section>
     
@@ -340,9 +348,6 @@ $(document).ready(function(){
         </div>
 
         <video class="video" style="width: 80%; display: block; margin: auto; margin-top: 40px; margin-bottom: 40px;" src="https://github.com/Mob-FGSR/Mob-FGSR.github.io/blob/main/resources/videos/android_demo.mp4?raw=true" preload="auto" controls=""></video>
-        
-        <h2 class="title level2">Source Code</h2>
-        <p class="main-content">⏱The code will be submitted in stages as it is undergoing review by our business partner.</p>
         
         <h2 class="title level2">Citation</h2>
         <div style="display: flex;overflow-x: auto;">
