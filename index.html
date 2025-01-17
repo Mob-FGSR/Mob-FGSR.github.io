@@ -52,10 +52,10 @@ $(document).ready(function(){
     $('#code_img').attr('src', 'resources/images/code_white.png');
   });
 
-  $('#news_btn').hover(function(){
-    $('#news_img').attr('src', 'resources/images/news_black.png');
+  $('#application_btn').hover(function(){
+    $('#application_img').attr('src', 'resources/images/application_black.png');
   }, function(){
-    $('#news_img').attr('src', 'resources/images/news_white.png');
+    $('#application_img').attr('src', 'resources/images/application_white.png');
   });
 });    
 </script>
@@ -98,7 +98,7 @@ $(document).ready(function(){
 
           <a href="https://github.com/Mob-FGSR/MobFGSR" class="btn" id="code_btn"><img id="code_img" style="width:1rem; height:1rem;" src="resources/images/code_white.png"/> Code</a>
 
-          <a href="#application" class="btn" id="news_btn"><img id="news_img" style="width:1rem; height:1rem;" src="resources/images/news_white.png"/> News</a>
+          <a href="#application" class="btn" id="application_btn"><img id="application_img" style="width:1rem; height:1rem;" src="resources/images/application_white.png"/> Commercial Application</a>
         </p>
       </section>
     
@@ -359,10 +359,13 @@ $(document).ready(function(){
         
         <h2 class="title level2" id="application">Application in Commercial Products of Our Method</h2>
         <p class="main-content"><a href="https://www.oneplus.com/">OnePlus Ace 3 Pro</a>, the first android smartphone able to run <i>Genshin Impact</i> at a stable 120 frames per second, released in June 2024.</p>        
-        <img src="resources/images/oneplus_cn.png" style="width: 100%; margin-top: 1rem;">
-        <p style="text-align: center;">Original Chinese</p>
-        <img src="resources/images/oneplus_en.png" style="width: 100%; margin-top: 1rem;">
-        <p style="text-align: center;">Translated</p>
+        <div style="display: flex; justify-content: center; flex-wrap: wrap; flex-direction:column; align-items:center;">
+
+          <img src="resources/images/oneplus_cn.png" style="width: 80%; margin-top: 1rem;">
+          <p class="main-content">Original Chinese</p>
+          <img src="resources/images/oneplus_en.png" style="width: 80%; margin-top: 1rem;">
+          <p class="main-content">Translated</p>
+        </div>
         <p class="main-content">
           Related links :
           <ul>
