@@ -51,6 +51,12 @@ $(document).ready(function(){
   }, function(){
     $('#code_img').attr('src', 'resources/images/code_white.png');
   });
+
+  $('#news_btn').hover(function(){
+    $('#news_img').attr('src', 'resources/images/news_black.png');
+  }, function(){
+    $('#news_img').attr('src', 'resources/images/news_white.png');
+  });
 });    
 </script>
 <head>
@@ -91,6 +97,8 @@ $(document).ready(function(){
           <a href="resources/paper/Sup_Mob_FGSR_Super_Resolution_and_Frame_Generation_for__Mobile_Real_time_Rendering.pdf" class="btn" id="supp_btn"><img id="supp_img" style="width:1rem; height:1rem;" src="resources/images/paper_white.png"/> Supp.</a>
 
           <a href="https://github.com/Mob-FGSR/MobFGSR" class="btn" id="code_btn"><img id="code_img" style="width:1rem; height:1rem;" src="resources/images/code_white.png"/> Code</a>
+
+          <a href="#application" class="btn" id="news_btn"><img id="news_img" style="width:1rem; height:1rem;" src="resources/images/news_white.png"/> News</a>
         </p>
       </section>
     
@@ -349,6 +357,31 @@ $(document).ready(function(){
 
         <video class="video" style="width: 80%; display: block; margin: auto; margin-top: 40px; margin-bottom: 40px;" src="https://github.com/Mob-FGSR/Mob-FGSR.github.io/blob/main/resources/videos/android_demo.mp4?raw=true" preload="auto" controls=""></video>
         
+        <h2 class="title level2" id="application">Application in Commercial Products of Our Method</h2>
+        <p class="main-content"><a href="https://www.oneplus.com/">OnePlus Ace 3 Pro</a>, the first android smartphone able to run <i>Genshin Impact</i> at a stable 120 frames per second, released in June 2024.</p>        
+        <img src="resources/images/oneplus_cn.png" style="width: 100%; margin-top: 1rem;">
+        <p style="text-align: center;">Original Chinese</p>
+        <img src="resources/images/oneplus_en.png" style="width: 100%; margin-top: 1rem;">
+        <p style="text-align: center;">Translated</p>
+        <p class="main-content">
+          Related links :
+          <ul>
+            <li>
+              <p class="main-content">OnePlus Ace 3 Pro frame prediction for <i>Genshin Impact</i> : </p>
+              <ul>
+                <li><p class="main-content">2024-06-27 <a href="https://www.oneplus.com/cn/ace-3-pro#anchor-2">https://www.oneplus.com/cn/ace-3-pro#anchor-2</a></p></li>
+                <li><p class="main-content">2024-06-27 <a href="https://www.bilibili.com/video/BV1vy411z7sB/">https://www.bilibili.com/video/BV1vy411z7sB/</a> at 51:35~55:00</p></li>
+              </ul>
+            </li>
+            <li>
+              <p class="main-content">OnePlus 13 frame prediction for <i>Genshin Impact</i> and <i>Honkai: Star Rail</i> :</p>
+              <ul>
+                <li><p class="main-content">2024-10-31 <a href="https://www.oneplus.com/cn/13#custom-anchor-3">https://www.oneplus.com/cn/13#custom-anchor-3</a></p></li>
+                <li><p class="main-content">2024-10-31 <a href="https://www.bilibili.com/video/BV1wVSnYbEeb/">https://www.bilibili.com/video/BV1wVSnYbEeb/</a> at 28:05~29:30</p></li>
+              </ul>
+            </li>
+          </ul>
+        </p>
         <h2 class="title level2">Citation</h2>
         <div style="display: flex;overflow-x: auto;">
           <pre style=" background-color: #e9eeef;padding: 1.25em 1.5em"><code>@inproceedings{yang2024mob,
